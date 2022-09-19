@@ -23,9 +23,11 @@
 \setminted{fontsize=\footnotesize}  % 设置代码字体大小
 \usemintedstyle{solarized-light}    % 设置代码环境高亮主题
 
-\setCJKmainfont[ItalicFont=楷体,BoldItalicFont=楷体]{宋体}  % 设置中文正文字体
-\setCJKmonofont{宋体}                                       % 设置中文等宽字体
-\setmainfont{Times New Roman}                               % 设置英文正文字体
+% 取消中文字体设置，因为只有windows才有宋体和楷体这两个字体
+% \setCJKmainfont[ItalicFont=楷体,BoldItalicFont=楷体]{宋体}  % 设置中文正文字体
+% \setCJKmonofont{宋体}                                       % 设置中文等宽字体
+
+% \setmainfont{Times New Roman}                               % 设置英文正文字体
 \setmonofont[Path=../fonts/,BoldFont=Inconsolata-Bold.ttf]{Inconsolata-Regular.ttf}       % 设置英文等宽字体
 \setlist{nosep}                 % 设置列表垂直间距为0
 
@@ -74,14 +76,13 @@
     #1
 }
 
-\includeonly{ch21}
-
 \begin{document}
     \frontmatter
     \pagestyle{front}
     \pdfbookmark[0]{目录}{\indexname}
     \tableofcontents
     \include{preface}
+    \include{translator}
 
     \mainmatter
     \pagestyle{main}

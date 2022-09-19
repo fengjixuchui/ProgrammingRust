@@ -1,0 +1,28 @@
+name: Check Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  check-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: wtfjoke/setup-tectonic@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+
+      - name: check build
+        run: |
+          pip install Pygments
+          cd src
+          tectonic -Z shell-escape main.tex

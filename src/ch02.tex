@@ -419,9 +419,9 @@ crate有一些可选的特性：这些特性是有些用户可能用不到、但
 
 \texttt{get\_index}函数构建了一个\texttt{HttpResponse}类型的值作为HTTP \texttt{GET /}请求的响应。\texttt{HttpResponse::Ok()}代表HTTP \texttt{200 OK}状态，表示请求被成功处理。我们还调用了它的\texttt{content\_type}和\texttt{body}方法来填充相应的细节；每一个调用都会返回调用它们的\texttt{HttpResponse}。最后，\texttt{body}方法的返回值作为\texttt{get\_index}的返回值。
 
-因为相应的文本中包含很多双引号，所以我们使用了Rust的raw string语法：字母\texttt{r}、0个或多个井号（\texttt{\#}字符）、一个双引号，string的内容、最后以另一个双引号加上和开头处相同数量的井号结尾。raw string中出现的任何字符都不会被转义，包括双引号；事实上，没有转移的序列例如\texttt{\textbackslash"}也可以被识别。我们可以通过增多井号的数量来保证终止的标记不会出现在字符串内容中。
+因为相应的文本中包含很多双引号，所以我们使用了Rust的raw string语法：字母\texttt{r}、0个或多个井号（\texttt{\#}字符）、一个双引号，string的内容、最后以另一个双引号加上和开头处相同数量的井号结尾。raw string中出现的任何字符都不会被转义，包括双引号；事实上，没有转义的序列例如\texttt{\textbackslash"}也可以被识别。我们可以通过增多井号的数量来保证终止的标记不会出现在字符串内容中。
 
-编写完\texttt{main.rs}之后，我们可以使用\texttt{carto run}命令来运行它：它会自动获取所需的crate、编译它们、编译我们自己的程序、并链接在一起、然后启动它：
+编写完\texttt{main.rs}之后，我们可以使用\texttt{cargo run}命令来运行它：它会自动获取所需的crate、编译它们、编译我们自己的程序、并链接在一起、然后启动它：
 \begin{minted}{text}
     $ cargo run
         Updating crates.io index
@@ -566,7 +566,7 @@ Rust的另一项长处是对并发编程的支持。Rust中用于避免内存安
     }
 \end{minted}
 
-在现实中，Rust可能会看出\texttt{x}的值从来没有被使用过，因此并不执行计算。但一开始，首先让我们假设代码按照我们所写的运行。\texttt{x}的值将会发生什么变化？任何小于1的数平方都会变得更小，因此它会接近于0；1的平方还是1；大于1的数平方会变得更大，因此它会接近无限大；负数的平方将会使它变为整数，然后它的变化就和前面说的一样（\hyperref[f2-3]{图2-3}）。
+在现实中，Rust可能会看出\texttt{x}的值从来没有被使用过，因此并不执行计算。但一开始，首先让我们假设代码按照我们所写的运行。\texttt{x}的值将会发生什么变化？任何小于1的数平方都会变得更小，因此它会接近于0；1的平方还是1；大于1的数平方会变得更大，因此它会接近无限大；负数的平方将会使它变为正数，然后它的变化就和前面说的一样（\hyperref[f2-3]{图2-3}）。
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.8\textwidth]{../img/f2-3.png}
